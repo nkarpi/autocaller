@@ -1,8 +1,6 @@
 # Download the library from twilio.com/docs/libraries
 
 from flask import Flask
-from flask import jsonify
-from flask import render_template
 from flask import request
 from flask import url_for
 
@@ -10,19 +8,16 @@ from twilio import twiml
 from twilio.rest import TwilioRestClient
 
 import praw
-import settings
+from settings import * 
 
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('settings.py')
 
 # default route
-@app.route('/')
-def index():
-    return str("Hello World foobar")
-
-    # return render_template('index.html',
-    #                        configuration_error=None)
+# @app.route('/')
+# def index():
+#     return str("Hello World foobar")
 
 # Voice Request URL
 # @app.route('/call', methods=['POST'])
@@ -47,7 +42,7 @@ def outbound():
     posts = list(posts_generator)
     top_post = posts[0]
 
-    response.say("Nolan Karpinski" + top_post,
+    response.say("Nolan Karpinski " + str(top_post),
                  voice='alice')
 
     return str(response)
