@@ -1,5 +1,7 @@
 from flask import Flask
 import twilio.twiml
+import praw
+from settings import *
  
 app = Flask(__name__)
  
