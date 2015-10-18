@@ -1,9 +1,10 @@
 from flask import Flask
 import twilio.twiml
 import praw
-from settings import *
  
 app = Flask(__name__)
+
+REDDIT_URL='https://www.reddit.com/'
  
 @app.route("/", methods=['GET', 'POST'])
 def message():
