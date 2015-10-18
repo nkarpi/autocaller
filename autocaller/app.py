@@ -5,6 +5,7 @@ from flask import request
 from flask import url_for
 
 from twilio import twiml
+import twilio.twiml
 from twilio.rest import TwilioRestClient
 
 import praw
@@ -28,22 +29,21 @@ def call():
     
     twilio_client.calls.create(from_=TWILIO_NUMBER,
                                to=CALL_TO_NUMBER,
-                               url=url_for('.message',
-                                           _external=True))
+                               url='localhost:5000/message')
 
 
-@app.route('/message', methods=['POST'])
+@app.route('/message', methods=['GET','POST'])
 def message():
 
-    response = twiml.Response()
+    resp = twilio.twiml.Response()
 
     r = praw.Reddit(user_agent='web:autocaller:v1.0 (by nkarpi)')
     posts_generator = r.get_content(REDDIT_URL)
     posts = list(posts_generator)
     top_post = posts[0]
 
-    response.say("Nolan Karpinski " + str(top_post).split('::')[1],
+    resp.say("Nolan Karpinski " + str(top_post).split('::')[1],
                  voice='alice')
 
-    return str(response)
+    return str(resp)
 
