@@ -22,7 +22,7 @@ def message():
     # instantiate a twiml respoonse obj. 
     # Use the "say" verb to create XLM response
     resp = twilio.twiml.Response()
-    resp.say(""Nolan Karpinski " + headline",
+    resp.say("Nolan Karpinski " + headline,
                  voice='alice')
 
     return str(resp)
