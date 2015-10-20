@@ -15,8 +15,9 @@ with an automated message structured by the TwiML app in voice.py
 
 Voice.py (TwiML app) calls the Python API Wrapper and retrieves the top 
 headline from the front page of Reddit and creates/returns an XML object, 
-available to the public web, which is ultimately called by the Twilio App to 
-direct what the automated call should do when initiated, using the "say" verb
+available to the public web via Heroku, which is ultimately called by the 
+Twilio App to direct what the automated call should do when initiated, using 
+the "say" verb
 
 Additional necessary files:
 A settings.py file is needed locally to specify:
