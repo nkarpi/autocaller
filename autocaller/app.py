@@ -3,7 +3,10 @@ from flask import Flask
 from flask import request
 
 # Download the library from twilio.com/docs/libraries
+from twilio import twiml
+import twilio.twiml
 from twilio.rest import TwilioRestClient
+
 
 # This settings file includes all global variables used here
 from settings import * 
@@ -26,6 +29,7 @@ def call():
     # The URL contains the call data/message
     twilio_client.calls.create(from_=TWILIO_NUMBER,
                                to=CALL_TO_NUMBER,
-                               url=VOICE_MSG_URL)
+                               url=VOICE_MSG_URL,
+                               ifmachine='Continue',)
 
 
