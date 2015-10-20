@@ -1,49 +1,32 @@
-# Download the library from twilio.com/docs/libraries
-
+# import Flask - lightweight web framework
 from flask import Flask
 from flask import request
-from flask import url_for
 
+# Download the library from twilio.com/docs/libraries
 from twilio import twiml
-import twilio.twiml
 from twilio.rest import TwilioRestClient
 
-import praw
+# This settings file includes all global variables used here
 from settings import * 
 
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('settings.py')
 
-# default route
-# @app.route('/')
-# def index():
-#     return str("Hello World foobar")
+# default route for debugging purposes
+@app.route('/')
+def index():
+    return str("Twilio App - Online")
 
-# Voice Request URL
+# Voice Request endpoint
 @app.route('/call', methods=['POST'])
 def call():
-    # Get phone number we need to call
-
+    # Create the twilio client object with the SID and Auth Token
     twilio_client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    
+    # Eexecute a call using the associated URL
+    # The URL contains the call data/message
     twilio_client.calls.create(from_=TWILIO_NUMBER,
                                to=CALL_TO_NUMBER,
-                               url='localhost:5000/message')
+                               url=VOICE_MSG_URL)
 
-
-@app.route('/message', methods=['GET','POST'])
-def message():
-
-    resp = twilio.twiml.Response()
-
-    r = praw.Reddit(user_agent='web:autocaller:v1.0 (by nkarpi)')
-    posts_generator = r.get_content(REDDIT_URL)
-    posts = list(posts_generator)
-    top_post = posts[0]
-
-    resp.say("Nolan Karpinski " + str(top_post).split('::')[1],
-                 voice='alice')
-
-    return str(resp)
 
