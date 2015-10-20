@@ -3,7 +3,6 @@ from flask import Flask
 from flask import request
 
 # Download the library from twilio.com/docs/libraries
-from twilio import twiml
 from twilio.rest import TwilioRestClient
 
 # This settings file includes all global variables used here
