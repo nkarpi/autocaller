@@ -1,10 +1,13 @@
+# app.py 
+
+# Uses the Twilio API to instantiate a phone call, with call
+# data retrieved from the VOICE_MSG_URL 
+
 # import Flask - lightweight web framework
 from flask import Flask
 from flask import request
 
 # Download the library from twilio.com/docs/libraries
-from twilio import twiml
-import twilio.twiml
 from twilio.rest import TwilioRestClient
 
 

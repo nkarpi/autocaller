@@ -1,3 +1,8 @@
+# voice.py
+
+# Serves an XML object via TwiML that includes a string and 
+# the top headline on the front page of Reddit
+
 # import flask - lightweight web framework
 from flask import Flask
 # import twiml - a twilio app for making the voice message
