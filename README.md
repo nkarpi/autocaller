@@ -1,5 +1,7 @@
 AUTOCALLER
 
+[![Git](https://app.soluble.cloud/api/v1/public/badges/18dad69e-06b1-464c-a0f7-01c05e09ed35.svg?orgId=512668277390)](https://app.soluble.cloud/repos/details/github.com/nkarpi/autocaller?orgId=512668277390)  
+
 Author: Nolan Karpinski
 Last Edit: 10/20/2015
 
